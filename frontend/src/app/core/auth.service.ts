@@ -18,16 +18,17 @@ export class AuthService {
 
   constructor(private http: HttpClient, private token: TokenService) {}
 
+  // Cambia ambos métodos:
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${this.base}/login`, { email, password })
-      .pipe(tap(res => this.token.set(res.token, res.email)));
+      .pipe(tap(res => this.token.set(res.token, res.email, res.rol))); // ← res.rol
   }
 
   register(nombre: string, email: string, password: string, rol?: string): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${this.base}/register`, { nombre, email, password, rol })
-      .pipe(tap(res => this.token.set(res.token, res.email)));
+      .pipe(tap(res => this.token.set(res.token, res.email, res.rol))); // ← res.rol
   }
 
   logout(): void {
