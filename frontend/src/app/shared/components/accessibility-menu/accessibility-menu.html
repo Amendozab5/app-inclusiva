@@ -1,0 +1,77 @@
+<div class="acc-wrapper" [class.is-open]="isOpen">
+  <!-- Main Trigger Button -->
+  <button class="acc-trigger glass" (click)="toggleMenu()" aria-label="Abrir opciones de accesibilidad">
+    <svg *ngIf="!isOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 8v8" />
+      <path d="M8 12h8" />
+    </svg>
+    <svg *ngIf="isOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Expanded Menu Panel -->
+  <div class="acc-panel glass reveal" *ngIf="isOpen">
+    <div class="panel-header">
+      <h3 class="heading-sm">Accesibilidad</h3>
+      <p class="text-xs">Personaliza tu experiencia visual</p>
+    </div>
+
+    <div class="panel-body">
+      <!-- Font Size Controller -->
+      <div class="acc-section">
+        <label class="section-label">Tamaño de Fuente ({{ fontSize }}%)</label>
+        <div class="section-controls">
+          <button class="btn-control" (click)="changeFontSize(-10)" aria-label="Disminuir texto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </button>
+          <div class="font-preview">A</div>
+          <button class="btn-control" (click)="changeFontSize(10)" aria-label="Aumentar texto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- High Contrast Toggle -->
+      <div class="acc-section">
+        <label class="section-label">Modo Visual</label>
+        <button class="btn-toggle" [class.active]="highContrast" (click)="toggleContrast()">
+          <span class="toggle-icon">
+            <svg *ngIf="!highContrast" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg *ngIf="highContrast" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="18.36" x2="5.64" y2="16.92" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </span>
+          Alto Contraste
+        </button>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <button class="btn-reset" (click)="reset()">Restablecer Todo</button>
+    </div>
+  </div>
+</div>

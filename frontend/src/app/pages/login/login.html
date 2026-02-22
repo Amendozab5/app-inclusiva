@@ -1,0 +1,79 @@
+<div class="login-wrapper">
+  <!-- Subtle background decorative elements -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="login-container reveal">
+    <div class="card glass">
+      <div class="login-header">
+        <div class="logo-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M12 8v4" />
+            <path d="M12 16h.01" />
+          </svg>
+        </div>
+        <h1 class="title heading-lg">Acceso Seguro</h1>
+        <p class="subtitle text-sm">Gestiona tu contenido de forma inclusiva</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="login-form">
+        <div class="input-group">
+          <label class="input-label" for="email">Correo Electrónico</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input class="form-control" type="email" id="email" name="email" [(ngModel)]="email" required
+              placeholder="tu@correo.com">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="password">Contraseña</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input class="form-control" type="password" id="password" name="password" [(ngModel)]="password" required
+              minlength="8" placeholder="••••••••">
+          </div>
+        </div>
+
+        <button class="btn btn-primary w-full" type="submit">
+          Ingresar al Portal
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        @if (error) {
+        <div class="error-toast reveal delay-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          {{ error }}
+        </div>
+        }
+      </form>
+    </div>
+
+    <footer class="login-meta text-sm">
+      <p>&copy; 2026 Plataforma Inclusiva Académica</p>
+      <div class="meta-links">
+        <span>Accesibilidad</span>
+        <span>Privacidad</span>
+      </div>
+    </footer>
+  </div>
+</div>
